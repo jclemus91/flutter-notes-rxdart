@@ -15,6 +15,7 @@ Proyecto:
         Stateless
         Stateful
         State
+            Declarativo
         BLoc
             Bloc es como un ViewModel
             StreamController es como un LiveData
