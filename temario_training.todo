@@ -1,0 +1,38 @@
+Proyecto:
+    Es codigo nativo?
+        Sí
+    Why Flutter?
+        Hot reload
+        Proyecto con codigo compartido
+    Dart
+        Nomenclatura
+            nombre de archivos en minusculas
+            declaración de clases en Pascal
+    Iniciar un Proyecto
+
+
+    Flutter Structure
+        Stateless
+        Stateful
+        State
+        BLoc
+            Bloc es como un ViewModel
+            StreamController es como un LiveData
+        Lifecycle
+    Architecture
+        MVVM - BLoc
+        
+    Install Flutter
+        Requerimientos
+            Android Studio
+        Steps
+
+1 hora 
+    Vista Simple con Texto al centro
+    Bloc
+    Dao
+    Repository
+
+2 hora
+    Crear Add note Screen
+    Pasar datos al Bloc y guardar nota
