@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'add_note_bloc.dart';
 
@@ -9,9 +10,19 @@ class AddNoteScreen extends StatefulWidget {
 }
 
 class _AddNoteState extends State<AddNoteScreen> {
-
   final _titleController = TextEditingController();
   final _messageController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    addNoteBloc
+      ..navigatorAddNote.goBack.listen((event) {
+        if (Navigator.canPop(context)) {
+          Navigator.pop(context);
+        }
+      });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +58,7 @@ class _AddNoteState extends State<AddNoteScreen> {
                   RaisedButton(
                     child: Text("Cancel"),
                     onPressed: () {
-                      print("printear");
+                      addNoteBloc.cancelAction();
                     },
                   ),
                   Container(
@@ -57,9 +68,7 @@ class _AddNoteState extends State<AddNoteScreen> {
                       child: Text("Save"),
                       onPressed: () {
                         addNoteBloc.createNote(
-                            _titleController.text,
-                            _messageController.text
-                        );
+                            _titleController.text, _messageController.text);
                       },
                     ),
                   ),
@@ -68,6 +77,12 @@ class _AddNoteState extends State<AddNoteScreen> {
             ],
           )),
     );
+  }
+
+  @override
+  void dispose() {
+    addNoteBloc.dispose();
+    super.dispose();
   }
 
 }
