@@ -22,7 +22,7 @@ class _NotesScreenState extends State<NotesScreen> {
       body: StreamBuilder(
         stream: notesBloc.notesSubject,
         builder: (context, snapshot) {
-          List<Note> notes = null;
+          List<Note> notes;
           if (snapshot.hasData) {
             notes = snapshot.data;
           }
@@ -32,7 +32,19 @@ class _NotesScreenState extends State<NotesScreen> {
                 itemCount: notes.length,
                 itemBuilder: (context, position) {
                   Note note = notes[position];
-                  return Text("title: " + note.title);
+                  return Container(
+                    child: Card(
+                      child: InkWell(
+                        onTap: () {
+                          _goToDetail(position);
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Text(note.title),
+                        ),
+                      ),
+                    ),
+                  );
                 });
           } else {
             return Center(
@@ -56,8 +68,13 @@ class _NotesScreenState extends State<NotesScreen> {
 
   void _fabPressed() {
     Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => AddNoteScreen())
-    );
+        context, MaterialPageRoute(builder: (context) => AddNoteScreen()));
   }
+
+  void _goToDetail(int position) {
+    /*Navigator.push(context, MaterialPageRoute(builder: (context) {
+      DetailNoteScreen.withPosition(position);
+    }));*/
+  }
+
 }

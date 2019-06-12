@@ -1,25 +1,26 @@
 
-
 import 'package:notes/model/note.dart';
 import 'package:notes/repository/note_respository.dart';
 import 'package:notes/ui/add/add_note_bloc.dart';
 import 'package:rxdart/rxdart.dart';
 
-NotesBloc notesBloc = NotesBloc(noteRepository);
+DetailNoteBloc detailNoteBloc = DetailNoteBloc(noteRepository);
 
-class NotesBloc {
+class DetailNoteBloc {
 
   NoteRepository _noteRepository;
+  final noteSubject = BehaviorSubject<Note>();
 
-  final notesSubject = BehaviorSubject<List<Note>>();
-
-  NotesBloc(NoteRepository noteRepository) {
+  DetailNoteBloc(NoteRepository noteRepository) {
     _noteRepository = noteRepository;
-    notesSubject.sink.add(_noteRepository.getNotes());
+  }
+
+  Note getNote(int position) {
+    _noteRepository.getNotes()[position];
   }
 
   void dispose() {
-    //notesSubject.close();
+    noteSubject.close();
   }
 
 }

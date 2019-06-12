@@ -67,8 +67,7 @@ class _AddNoteState extends State<AddNoteScreen> {
                     child: RaisedButton(
                       child: Text("Save"),
                       onPressed: () {
-                        addNoteBloc.createNote(
-                            _titleController.text, _messageController.text);
+                        _addNote(_titleController.text, _messageController.text);
                       },
                     ),
                   ),
@@ -83,6 +82,10 @@ class _AddNoteState extends State<AddNoteScreen> {
   void dispose() {
     addNoteBloc.dispose();
     super.dispose();
+  }
+
+  void _addNote(String title, String message) {
+    addNoteBloc.createNote(title, message);
   }
 
 }

@@ -19,6 +19,7 @@ class AddNoteBloc {
 
   void createNote(String title, String message) {
     _noteRepository.addNote(Note(title, message));
+    cancelAction();
   }
 
   void cancelAction() {
@@ -26,11 +27,11 @@ class AddNoteBloc {
   }
 
   void dispose() {
-    navigatorAddNote.goBack.close();
+    //navigatorAddNote.goBack.close();
   }
 
 }
 
 class _NavigatorAddNote {
-  final goBack = BehaviorSubject<Object>();
+  final goBack = PublishSubject<Object>();
 }
