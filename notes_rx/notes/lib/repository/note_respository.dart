@@ -18,4 +18,8 @@ class NoteRepository {
     return _noteDao.getNotes();
   }
 
+  Note getNote(int position) {
+    return _noteDao.getNote(position);
+  }
+
 }

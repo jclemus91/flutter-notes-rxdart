@@ -5,7 +5,6 @@ import '../note_dao.dart';
 List<Note> _notesDB = List<Note>();
 
 class NoteDaoImpl extends NoteDao {
-
   @override
   void addNote(Note note) {
     _notesDB.add(note);
@@ -16,4 +15,8 @@ class NoteDaoImpl extends NoteDao {
     return _notesDB;
   }
 
+  @override
+  Note getNote(int position) {
+    return _notesDB[position];
+  }
 }

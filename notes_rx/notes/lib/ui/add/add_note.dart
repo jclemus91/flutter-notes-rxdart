@@ -10,13 +10,14 @@ class AddNoteScreen extends StatefulWidget {
 }
 
 class _AddNoteState extends State<AddNoteScreen> {
+  final _addNoteBloc = AddNoteBloc(noteRepository);
   final _titleController = TextEditingController();
   final _messageController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    addNoteBloc
+    _addNoteBloc
       ..navigatorAddNote.goBack.listen((event) {
         if (Navigator.canPop(context)) {
           Navigator.pop(context);
@@ -58,7 +59,7 @@ class _AddNoteState extends State<AddNoteScreen> {
                   RaisedButton(
                     child: Text("Cancel"),
                     onPressed: () {
-                      addNoteBloc.cancelAction();
+                      _addNoteBloc.cancelAction();
                     },
                   ),
                   Container(
@@ -80,12 +81,12 @@ class _AddNoteState extends State<AddNoteScreen> {
 
   @override
   void dispose() {
-    addNoteBloc.dispose();
+    _addNoteBloc.dispose();
     super.dispose();
   }
 
   void _addNote(String title, String message) {
-    addNoteBloc.createNote(title, message);
+    _addNoteBloc.createNote(title, message);
   }
 
 }

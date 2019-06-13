@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:notes/model/note.dart';
 import 'package:notes/ui/add/add_note.dart';
+import 'package:notes/ui/add/add_note_bloc.dart';
+import 'package:notes/ui/detail/detail_note.dart';
 
 import 'notes_bloc.dart';
 
@@ -13,6 +15,9 @@ class NotesScreen extends StatefulWidget {
 }
 
 class _NotesScreenState extends State<NotesScreen> {
+
+  final _notesBloc = NotesBloc(noteRepository);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +25,7 @@ class _NotesScreenState extends State<NotesScreen> {
         title: Text("Notes"),
       ),
       body: StreamBuilder(
-        stream: notesBloc.notesSubject,
+        stream: _notesBloc.notesSubject,
         builder: (context, snapshot) {
           List<Note> notes;
           if (snapshot.hasData) {
@@ -62,19 +67,22 @@ class _NotesScreenState extends State<NotesScreen> {
 
   @override
   void dispose() {
-    notesBloc.dispose();
+    _notesBloc.dispose();
     super.dispose();
   }
 
   void _fabPressed() {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => AddNoteScreen()));
+        context,
+        MaterialPageRoute(builder: (context) => AddNoteScreen())
+    );
   }
 
   void _goToDetail(int position) {
-    /*Navigator.push(context, MaterialPageRoute(builder: (context) {
-      DetailNoteScreen.withPosition(position);
-    }));*/
+    Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => DetailNoteScreen.withPosition(position)
+        )
+    );
   }
-
 }

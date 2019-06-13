@@ -2,10 +2,7 @@
 
 import 'package:notes/model/note.dart';
 import 'package:notes/repository/note_respository.dart';
-import 'package:notes/ui/add/add_note_bloc.dart';
 import 'package:rxdart/rxdart.dart';
-
-NotesBloc notesBloc = NotesBloc(noteRepository);
 
 class NotesBloc {
 
@@ -19,7 +16,7 @@ class NotesBloc {
   }
 
   void dispose() {
-    //notesSubject.close();
+    notesSubject.close();
   }
 
 }

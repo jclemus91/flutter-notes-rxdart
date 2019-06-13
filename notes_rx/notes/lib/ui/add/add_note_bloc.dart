@@ -7,7 +7,6 @@ import 'package:rxdart/subjects.dart';
 
 final NoteDao _noteDao = NoteDaoImpl();
 final NoteRepository noteRepository = NoteRepository(_noteDao);
-final AddNoteBloc addNoteBloc = AddNoteBloc(noteRepository);
 
 class AddNoteBloc {
   NoteRepository _noteRepository;
@@ -27,7 +26,7 @@ class AddNoteBloc {
   }
 
   void dispose() {
-    //navigatorAddNote.goBack.close();
+    navigatorAddNote.goBack.close();
   }
 
 }
