@@ -22,7 +22,7 @@ class AddNoteBloc {
   }
 
   void cancelAction() {
-    navigatorAddNote.goBack.sink.add(Object());
+    navigatorAddNote.goBack.add(Object());
   }
 
   void dispose() {

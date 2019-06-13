@@ -12,7 +12,7 @@ class DetailNoteBloc {
   }
 
   Note getNote(int position) {
-    noteSubject.sink.add(_noteRepository.getNote(position));
+    noteSubject.add(_noteRepository.getNote(position));
   }
 
   void dispose() {

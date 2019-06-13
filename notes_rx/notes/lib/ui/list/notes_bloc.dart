@@ -12,7 +12,7 @@ class NotesBloc {
 
   NotesBloc(NoteRepository noteRepository) {
     _noteRepository = noteRepository;
-    notesSubject.sink.add(_noteRepository.getNotes());
+    notesSubject.add(_noteRepository.getNotes());
   }
 
   void dispose() {
