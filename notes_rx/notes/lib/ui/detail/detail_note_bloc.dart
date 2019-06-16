@@ -11,7 +11,7 @@ class DetailNoteBloc {
     _noteRepository = noteRepository;
   }
 
-  Note getNote(int position) {
+  void getNote(int position) {
     noteSubject.add(_noteRepository.getNote(position));
   }
 
