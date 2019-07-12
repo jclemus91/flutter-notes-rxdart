@@ -1,6 +1,6 @@
 # Flutter Notes
 
-A new Notes application.
+A new Notes application for company training
 
 ## Getting Started
 
